@@ -36,13 +36,22 @@ def validate_signup():
         passwordverify_error = "That's not a valid password"
     elif passwordverify != password:
         passwordverify_error = "That's not a valid password"
-    
-    if '@' not in email and '.' not in email:
-        email_error = "That's not a valid email"
-    elif len(email) > 20 or len(email) < 3 in email:
-        email_error = "That's not a valid email"
+            
+    if (email) and len(email) > 1 and len(email) > 20 or len(email) < 3:
+        email_error_1 = "That's not a valid email"
+    else:
+        if (email) and len(email) > 0:
+            if (email) and '@' not in (email.strip()):
+                email_error = "That's not a valid email" 
+            if (email) and '.' not in (email.strip()): 
+                email_error = "That's not a valid email"
+            if (email) and " " in (email.strip()):
+                email_error = "That's not a valid email"
 
-    if username_error == email_error == passwordverify_error == email_error == '':
+            
+
+
+    if username_error == email_error == passwordverify_error == '':
         return render_template('welcome.html', username=username)
     else:
         return render_template('index.html', username = username, email = email, username_error = username_error, password_error = password_error, passwordverify_error = passwordverify_error, email_error = email_error)
